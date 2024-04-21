@@ -93,7 +93,7 @@ def get_session():
         extracted_file = extract_text_from_pdf(file)    
 
     try:
-        session_id = os.urandom(24).hex()
+        session_id = 123
         initial_messages = [{"role": "system", "content": "This is a system message to start the chat."},{"role": "user", "content": extracted_file}]
         chat_sessions[session_id] = initial_messages
         return jsonify({"session_id": session_id})
