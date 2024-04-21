@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Pass the API key as an environment variable
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Pass the API key as an environment variable
 
     steps:
       - name: Checkout code
