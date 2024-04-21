@@ -61,9 +61,9 @@ def ask_question():
     data = request.get_json()
     session_id = data.get('session_id')
     question = data.get('question')
-    if not session_id:
-        return jsonify({"error": "Missing session_id in JSON payload"}), 400   
     if not question:
+        return jsonify({"error": "Missing session_id in JSON payload"}), 400   
+    if not session_id:
         return jsonify({"error": "Missing question in JSON payload"}), 400   
     chat_history = chat_sessions.get(session_id, [])
     message = {"role": "user", "content": question}
