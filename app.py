@@ -62,9 +62,9 @@ def ask_question():
     session_id = data.get('session_id')
     question = data.get('question')
     if not question:
-        return jsonify({"error": "Missing session_id in JSON payload"}), 400   
-    if not session_id:
         return jsonify({"error": "Missing question in JSON payload"}), 400   
+    if not session_id:
+        return jsonify({"error": "Missing session_id in JSON payload"}), 400   
     chat_history = chat_sessions.get(session_id, [])
     message = {"role": "user", "content": question}
     chat_history.append(message)
@@ -96,7 +96,7 @@ def get_session():
         session_id = 123
         initial_messages = [{"role": "system", "content": "This is a system message to start the chat."},{"role": "user", "content": extracted_file}]
         chat_sessions[session_id] = initial_messages
-        return jsonify({"session_id": session_id})
+        return jsonify({"session_id": session_id}), 200
     except Exception as e:
         print(f"Error during API call:, {str(e)}")
         return jsonify({"error": str(e)}), 400
