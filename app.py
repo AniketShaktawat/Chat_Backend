@@ -9,8 +9,6 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 openai.api_key = os.getenv('OPENAI_API_KEY')
-print("Using OpenAI API Key:", os.getenv('OPENAI_API_KEY'))
-
 
 def _build_cors_preflight_response():
     response = make_response()
