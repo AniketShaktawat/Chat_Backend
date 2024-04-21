@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 
-openai.api_key = "sk-proj-fNZAldv3Ep9kBEnVaF8uT3BlbkFJBYFmT0SATnL9qQJZs2hY"
+openai.api_key = "sk-proj-yVtLqQrYNOPtTJW9a0ZbT3BlbkFJkXrNZ3TO6b0aN462oOia"
 
 def _build_cors_preflight_response():
     response = make_response()
