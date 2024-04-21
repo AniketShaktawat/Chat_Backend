@@ -8,9 +8,9 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 openai.api_key = "sk-proj-fNZAldv3Ep9kBEnVaF8uT3BlbkFJBYFmT0SATnL9qQJZs2hY"
-
-
 # openai.api_key = os.getenv('OPENAI_API_KEY')
+# print("Using OpenAI API Key:", os.getenv('OPENAI_API_KEY'))
+
 
 def _build_cors_preflight_response():
     response = make_response()
@@ -42,7 +42,7 @@ def upload_pdf():
     if text is None:
         return jsonify({"error": "Failed to extract text from PDF"}), 400
     
-    print("test")
+    print("testing the Upload")
     
     try:
         session_id = os.urandom(24).hex()
@@ -63,6 +63,7 @@ def ask_question():
     data = request.get_json()
     session_id = data.get('session_id')
     question = data.get('question')
+    print(data)
     if not session_id or not question:
         return jsonify({"error": "Missing session_id or question in JSON payload"}), 400   
     chat_history = chat_sessions.get(session_id, [])
@@ -76,6 +77,7 @@ def ask_question():
         )
         chat_history.append(response.choices[0].message)
         chat_sessions[session_id] = chat_history 
+        print(response)
         
         answer = response.choices[0].message['content']
         return jsonify({"answer": answer})
