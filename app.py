@@ -7,8 +7,10 @@ import PyPDF2
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
+openai.api_key = "sk-proj-fNZAldv3Ep9kBEnVaF8uT3BlbkFJBYFmT0SATnL9qQJZs2hY"
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+
+# openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def _build_cors_preflight_response():
     response = make_response()
